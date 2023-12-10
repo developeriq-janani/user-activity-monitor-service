@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-activity-monitor-service
+  labels:
+    app: user-activity-monitor-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-activity-monitor-service
+  template:
+    metadata:
+      labels:
+        app: user-activity-monitor-service
+    spec:
+      containers:
+        - name: user-activity-monitor-service
+          image: gcr.io/PROJECT_ID/IMAGE:TAG  # Replace with your Docker Hub image and tag
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /api/v1/user-activity-monitor-service/actuator/health
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /api/v1/user-activity-monitor-service/actuator/health
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "400Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
