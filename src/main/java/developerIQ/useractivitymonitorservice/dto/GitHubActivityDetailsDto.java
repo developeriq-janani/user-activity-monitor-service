@@ -1,6 +1,7 @@
 package developerIQ.useractivitymonitorservice.dto;
 
 import developerIQ.useractivitymonitorservice.model.GitHubActivity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
