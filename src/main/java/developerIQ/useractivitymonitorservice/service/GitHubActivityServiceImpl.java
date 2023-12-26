@@ -1,6 +1,7 @@
 package developerIQ.useractivitymonitorservice.service;
 
 
+import developerIQ.useractivitymonitorservice.dto.GitHubActivityDetailsDto;
 import developerIQ.useractivitymonitorservice.dto.GitHubActivityDto;
 import developerIQ.useractivitymonitorservice.model.GitHubActivity;
 import developerIQ.useractivitymonitorservice.repository.GitHubActivityRepository;
@@ -40,15 +41,21 @@ public class GitHubActivityServiceImpl implements GitHubActivityService {
         return this.gitHubActivityRepository.findAll();
     }
 
+    @Override
+    public GitHubActivityDetailsDto getAllIssuesByAuthorName(String authorName){
+        List<GitHubActivity> gitHubIssues = this.gitHubActivityRepository.findAllByAuthorName(authorName.trim());
+        return GitHubActivityDetailsDto.builder().issueCount(gitHubIssues.size()).userIssues(gitHubIssues).build();
+
+    }
+
     private GitHubActivity generateGitHubActivityObject(GitHubActivityDto githubActivityDto) {
         return GitHubActivity.builder()
-                .gitHubId(githubActivityDto.getId())
-                .login(githubActivityDto.getLogin())
-                .contributions(githubActivityDto.getContributions())
-                .type(githubActivityDto.getType())
-                .siteAdmin(githubActivityDto.isSiteAdmin())
-                .reposUrl(githubActivityDto.getReposUrl())
-                .nodeId(githubActivityDto.getNodeId())
+                .userName(githubActivityDto.getUserDto().getUserName())
+                .userID(githubActivityDto.getUserDto().getUserId())
+                .userType(githubActivityDto.getUserDto().getUserType())
+                .issueTitle(githubActivityDto.getIssueTitle())
+                .createdAt(githubActivityDto.getCreatedAt())
+                .updatedAt(githubActivityDto.getUpdatedAt())
                 .build();
     }
 

@@ -18,17 +18,16 @@ public class GitHubActivity {
     @Id
     private String id;
 
-    private String login;
+    private String userName;
 
-    private int gitHubId;
+    private String userID;
 
-    private String nodeId;
+    private String userType;
 
-    private String reposUrl;
+    private String issueTitle;
 
-    private String type;
+    private String createdAt;
 
-    private boolean siteAdmin;
+    private String updatedAt;
 
-    private int contributions;
 }
