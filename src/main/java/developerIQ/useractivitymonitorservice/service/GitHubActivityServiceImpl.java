@@ -42,8 +42,8 @@ public class GitHubActivityServiceImpl implements GitHubActivityService {
     }
 
     @Override
-    public GitHubActivityDetailsDto getAllIssuesByAuthorName(String authorName){
-        List<GitHubActivity> gitHubIssues = this.gitHubActivityRepository.findAllByAuthorName(authorName.trim());
+    public GitHubActivityDetailsDto getAllIssuesByUserName(String userName){
+        List<GitHubActivity> gitHubIssues = this.gitHubActivityRepository.findAllByUserName(userName.trim());
         return GitHubActivityDetailsDto.builder().issueCount(gitHubIssues.size()).userIssues(gitHubIssues).build();
 
     }

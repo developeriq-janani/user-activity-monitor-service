@@ -29,8 +29,8 @@ public class ActivityController {
         return ResponseEntity.ok(this.gitHubActivityService.getAllActivities());
     }
 
-    @GetMapping("/issues/by-author-name")
-    public ResponseEntity<GitHubActivityDetailsDto> getAllIssuesByAuthorName(@RequestParam String authorName) {
-        return ResponseEntity.ok(this.gitHubActivityService.getAllIssuesByAuthorName(authorName));
+    @GetMapping("/issues/by-user-name")
+    public ResponseEntity<GitHubActivityDetailsDto> getAllIssuesByUserName(@RequestParam String userName) {
+        return ResponseEntity.ok(this.gitHubActivityService.getAllIssuesByUserName(userName));
     }
 }

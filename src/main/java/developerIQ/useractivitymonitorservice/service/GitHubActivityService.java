@@ -11,5 +11,5 @@ public interface GitHubActivityService {
 
     List<GitHubActivity> getAllActivities();
 
-    GitHubActivityDetailsDto getAllIssuesByAuthorName(String authorName);
+    GitHubActivityDetailsDto getAllIssuesByUserName(String userName);
 }

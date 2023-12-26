@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface GitHubActivityRepository extends MongoRepository<GitHubActivity, String> {
 
-    List<GitHubActivity> findAllByAuthorName(String authorName);
+    List<GitHubActivity> findAllByUserName(String userName);
 
 }
